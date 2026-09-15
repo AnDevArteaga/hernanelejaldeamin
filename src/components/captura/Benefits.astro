@@ -1,0 +1,60 @@
+---
+const benefits = [
+  {
+    kicker: '1. ORDENAR',
+    title: 'LO QUE ESTÁS VIVIENDO',
+    text: 'Por qué pensar una y otra vez en un problema no siempre produce claridad y cómo comenzar a mirarlo de una manera más ordenada.',
+    icon: 'bulb',
+  },
+  {
+    kicker: '2. APLICAR',
+    title: 'LA SABIDURÍA DE DIOS',
+    text: 'Principios cristianos prácticos para tomar mejores decisiones en la vida cotidiana.',
+    icon: 'tree',
+  },
+  {
+    kicker: '3. PASAR DE LA',
+    title: 'REFLEXIÓN A LA ACCIÓN',
+    text: 'Da pasos concretos con confianza, fe y propósito frente a lo que hoy estás viviendo.',
+    icon: 'chart',
+  },
+] as const;
+---
+
+<section class="discover section">
+  <div class="shell">
+    <h2 class="section-title">En esta clase descubrirás…</h2>
+    <div class="benefits">
+      {
+        benefits.map((b) => (
+          <article class="benefit">
+            <div class="benefit-icon" aria-hidden="true">
+              {b.icon === 'bulb' && (
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 4a7 7 0 0 0-4 12.7V20h8v-3.3A7 7 0 0 0 12 4Z" />
+                  <path d="M9 20h6M10 23h4" />
+                  <path d="M8 9c1-2 3-3 5-3" />
+                </svg>
+              )}
+              {b.icon === 'tree' && (
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 11c-2-2-3-4-2-6 3 1 5 3 6 6M16 11c2-2 3-4 2-6-3 1-5 3-6 6M12 11v10" />
+                  <path d="M5 21h14M7 16c2-2 3-3 5-3s3 1 5 3" />
+                </svg>
+              )}
+              {b.icon === 'chart' && (
+                <svg viewBox="0 0 24 24">
+                  <path d="M6 20V10M12 20V5M18 20V13" />
+                  <path d="M4 20h16" />
+                </svg>
+              )}
+            </div>
+            <span class="benefit-kicker">{b.kicker}</span>
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

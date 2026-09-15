@@ -1,0 +1,25 @@
+:root {
+  --navy: #0d3a5a;
+  --navy-deep: #082b45;
+  --navy-soft: #164b6f;
+  --gold: #bf8d1f;
+  --gold-bright: #d5ad4e;
+  --gold-pale: #f0dfae;
+  --cream: #fbf7ed;
+  --ivory: #fffdf8;
+  --paper: #fffefa;
+  --ink: #113450;
+  --text: #2b4b62;
+  --muted: #6c7a84;
+  --line: #e8dfce;
+  --green: #16af5b;
+  --green-dark: #087d40;
+  --shadow: 0 18px 50px rgba(17, 52, 80, 0.1);
+  --shadow-soft: 0 10px 30px rgba(17, 52, 80, 0.08);
+  --radius: 18px;
+  --shell: 1140px;
+  --shell-narrow: 980px;
+  --font-sans: "Source Sans 3", "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-script: "Caveat", "Brush Script MT", "Segoe Script", cursive;
+}

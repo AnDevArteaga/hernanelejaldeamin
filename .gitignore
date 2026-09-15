@@ -1,0 +1,48 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+_legacy
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# environment variables / secrets
+.env
+.env.*
+!.env.example
+.env.local
+.env.production
+.env.development
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Vercel
+.vercel
+
+# misc
+*.pem
+*.key
+coverage/

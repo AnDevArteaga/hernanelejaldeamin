@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="930" viewBox="0 0 1800 930" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="fallback" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6dfaa"/>
+      <stop offset="1" stop-color="#244f62"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="930" fill="url(#fallback)"/>
+  <image href="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1800&amp;q=88" width="1800" height="930" preserveAspectRatio="xMidYMid slice"/>
+</svg>

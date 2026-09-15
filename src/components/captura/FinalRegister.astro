@@ -1,0 +1,53 @@
+---
+import { site } from '../../config/site';
+
+const mt = site.mastertools;
+const formAction = mt.formAction ?? site.thankYouPath;
+const formMethod = mt.configured ? 'post' : 'get';
+---
+
+<section class="final-register section" id="registro-final">
+  <div class="shell">
+    <div class="final-card">
+      <div class="final-copy">
+        <span class="form-eyebrow">DA EL PRIMER PASO</span>
+        <h2>Reserva tu lugar ahora</h2>
+        <p>
+          Regístrate gratuitamente y acompáñame en esta clase donde veremos una manera diferente de enfrentar
+          aquello que hoy ocupa tu mente y tu corazón.
+        </p>
+      </div>
+      <form
+        class="inline-form"
+        data-form="final"
+        data-mastertools={mt.configured ? 'true' : 'false'}
+        action={formAction}
+        method={formMethod}
+        novalidate
+      >
+        {mt.formId && <input type="hidden" name="form_id" value={mt.formId} />}
+        <label class="field"
+          ><span class="field-icon" aria-hidden="true"
+            ><svg viewBox="0 0 24 24"
+              ><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-4 3-6 7-6s7 2 7 6"></path></svg
+            ></span
+          ><input name="nombre" autocomplete="name" placeholder="Tu nombre" required /></label
+        >
+        <label class="field"
+          ><span class="field-icon" aria-hidden="true"
+            ><svg viewBox="0 0 24 24"><path d="M3 6.5h18v11H3zM4 7l8 6 8-6"></path></svg></span
+          ><input
+            name="correo"
+            type="email"
+            autocomplete="email"
+            placeholder="Tu correo electrónico"
+            required
+          /></label
+        >
+        <button class="btn btn-primary" type="submit">RESERVAR MI LUGAR <span>→</span></button>
+      </form>
+      <p class="form-note final-note">Recibirás la información del evento y los pasos para participar.</p>
+      <div class="form-status final-status" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>

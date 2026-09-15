@@ -1,0 +1,410 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shell {
+  width: min(calc(100% - 36px), var(--shell));
+  margin-inline: auto;
+}
+
+.shell-narrow {
+  width: min(calc(100% - 32px), var(--shell-narrow));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 54px 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  transform: translateY(-150%);
+  padding: 10px 14px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  min-width: 0;
+}
+
+.brand-symbol {
+  width: 42px;
+  height: 42px;
+  color: var(--gold-bright);
+  flex: 0 0 auto;
+}
+
+.brand-symbol svg {
+  stroke: none;
+  fill: currentColor;
+}
+
+.brand-copy {
+  display: grid;
+  line-height: 1.05;
+}
+
+.brand-copy strong {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.brand-copy small {
+  font-size: 9.5px;
+  letter-spacing: 2.1px;
+  margin-top: 6px;
+  opacity: 0.92;
+}
+
+.site-header {
+  position: relative;
+  z-index: 20;
+  background: linear-gradient(100deg, #0a3150, #11486b);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(5, 37, 58, 0.15);
+}
+
+.header-inner {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header-tagline {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  opacity: 0.92;
+}
+
+.header-tagline span {
+  color: #f0cc74;
+}
+
+.btn {
+  border: 0;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 19px;
+  font-weight: 900;
+  font-size: 11.5px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition:
+    0.2s transform,
+    0.2s box-shadow,
+    0.2s filter;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn-primary {
+  width: 100%;
+  margin-top: 11px;
+  color: #fff;
+  background: linear-gradient(180deg, #d3aa45, #af7b16);
+  box-shadow: 0 9px 20px rgba(171, 121, 22, 0.22);
+}
+
+.btn-gold {
+  color: #fff;
+  background: linear-gradient(180deg, #d7ad48, #b37e16);
+  box-shadow: 0 10px 22px rgba(171, 121, 22, 0.25);
+  white-space: nowrap;
+}
+
+.field {
+  position: relative;
+  display: block;
+  margin: 9px 0;
+}
+
+.field-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 19px;
+  height: 19px;
+  color: #7b8b96;
+  pointer-events: none;
+}
+
+.field input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #d8d8d5;
+  border-radius: 9px;
+  background: #fff;
+  padding: 0 14px 0 42px;
+  color: #1e435d;
+  outline: none;
+  transition:
+    0.2s box-shadow,
+    0.2s border-color;
+}
+
+.field input:focus {
+  border-color: #a7bdca;
+  box-shadow: 0 0 0 4px rgba(15, 60, 95, 0.07);
+}
+
+.form-eyebrow {
+  color: #9b741d;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+.form-note {
+  text-align: center;
+  margin: 9px 0 0;
+  font-size: 10.5px;
+  color: #7a858c;
+}
+
+.form-status {
+  min-height: 18px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a7041;
+  margin-top: 5px;
+}
+
+.site-footer {
+  background: #fff;
+  border-top: 1px solid #ece5d8;
+  color: var(--ink);
+  padding: 25px 0 18px;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 25px;
+}
+
+.footer-brand .brand-symbol {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-brand .brand-copy strong {
+  font-size: 16px;
+}
+
+.footer-brand .brand-copy small {
+  font-size: 7.5px;
+  color: #71808a;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10.5px;
+  color: #657581;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.socials {
+  display: flex;
+  gap: 7px;
+}
+
+.socials a {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0d3a5a;
+  color: #fff;
+  padding: 7px;
+  transition: 0.2s;
+}
+
+.socials a:hover {
+  transform: translateY(-1px);
+  background: #bf8d1f;
+}
+
+.socials svg {
+  stroke: currentColor;
+}
+
+.copyright {
+  text-align: center;
+  border-top: 1px solid #eee9e0;
+  margin-top: 19px;
+  padding-top: 13px;
+  font-size: 9.5px;
+  color: #89939a;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  translate: -50% 20px;
+  z-index: 100;
+  background: #092f4a;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 45px rgba(6, 28, 43, 0.28);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.toast.show {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    height: 72px;
+  }
+
+  .brand-copy strong {
+    font-size: 18px;
+  }
+
+  .brand-copy small {
+    font-size: 8px;
+  }
+
+  .header-tagline {
+    display: none;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .shell {
+    width: min(calc(100% - 22px), var(--shell));
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .header-inner {
+    height: 68px;
+  }
+
+  .brand-symbol {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-copy strong {
+    font-size: 16px;
+  }
+
+  .brand-copy small {
+    font-size: 7.3px;
+    letter-spacing: 1.4px;
+  }
+
+  .footer-links span {
+    display: none;
+  }
+
+  .footer-links {
+    gap: 13px;
+  }
+}

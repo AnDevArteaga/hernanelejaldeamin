@@ -1,0 +1,58 @@
+---
+import { site } from '../../config/site';
+
+const eventDate = new Date(site.event.iso);
+const dateFormatter = new Intl.DateTimeFormat(site.event.locale, {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  timeZone: site.event.timeZone,
+});
+const timeFormatter = new Intl.DateTimeFormat(site.event.locale, {
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true,
+  timeZone: site.event.timeZone,
+});
+
+let dateLabel = 'Fecha por confirmar';
+let timeLabel = site.event.timeLabel;
+
+if (!Number.isNaN(eventDate.getTime())) {
+  const d = dateFormatter.format(eventDate);
+  dateLabel = d.charAt(0).toUpperCase() + d.slice(1);
+  timeLabel = `${timeFormatter.format(eventDate)} · ${site.event.timeLabel}`;
+}
+---
+
+<section class="event-wrap" aria-label="Información del evento">
+  <div class="shell">
+    <div class="event-card">
+      <div class="event-info">
+        <div class="calendar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"
+            ><path d="M7 2v3M17 2v3M3.5 8.5h17M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
+            ></path></svg
+          >
+        </div>
+        <div>
+          <span class="event-label">CLASE EN VIVO</span>
+          <strong id="eventDateText">{dateLabel}</strong>
+          <small id="eventTimeText">{timeLabel}</small>
+        </div>
+      </div>
+
+      <div class="countdown" aria-label="Cuenta regresiva" data-countdown data-event-iso={site.event.iso}>
+        <div class="countdown-box"><b data-dd>00</b><span>DÍAS</span></div>
+        <div class="countdown-box"><b data-hh>00</b><span>HORAS</span></div>
+        <div class="countdown-box"><b data-mm>00</b><span>MIN</span></div>
+        <div class="countdown-box"><b data-ss>00</b><span>SEG</span></div>
+      </div>
+
+      <div class="event-action">
+        <span>Reserva tu lugar gratuitamente</span>
+        <a class="text-link scroll-register" href="#registro">Ir al registro ↓</a>
+      </div>
+    </div>
+  </div>
+</section>

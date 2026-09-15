@@ -1,0 +1,28 @@
+---
+/**
+ * Embed Wistia solo si hay mediaId. Sin ID no carga scripts externos.
+ */
+interface Props {
+  mediaId: string | null | undefined;
+  title?: string;
+  class?: string;
+  aspect?: string;
+}
+
+const { mediaId, title = 'Video', class: className = '', aspect = '16/9' } = Astro.props;
+const configured = Boolean(mediaId);
+---
+
+{
+  configured ? (
+    <div class:list={['wistia-player', className]} style={`aspect-ratio:${aspect}`}>
+      <div
+        class={`wistia_embed wistia_async_${mediaId} videoFoam=true`}
+        style="height:100%;width:100%"
+        title={title}
+      />
+      <script is:inline src={`https://fast.wistia.com/embed/medias/${mediaId}.jsonp`} async></script>
+      <script is:inline src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    </div>
+  ) : null
+}

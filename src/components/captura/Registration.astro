@@ -1,0 +1,98 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../../config/site';
+import WistiaPlayer from '../WistiaPlayer.astro';
+import hernanSentado from '../../assets/hernan-sentado.png';
+
+const mt = site.mastertools;
+const formAction = mt.formAction ?? site.thankYouPath;
+const formMethod = mt.configured ? 'post' : 'get';
+---
+
+<section class="registration section" id="registro">
+  <div class="shell reg-grid">
+    <div class="video-panel" aria-label="Video de presentación">
+      {
+        site.wistia.captura ? (
+          <div class="video-poster video-poster--embed">
+            <WistiaPlayer mediaId={site.wistia.captura} title="Video de presentación" />
+          </div>
+        ) : (
+          <div class="video-poster">
+            <Image
+              src={hernanSentado}
+              alt="Hernán Elejalde Amin"
+              widths={[480, 720, 960]}
+              sizes="(max-width: 900px) 100vw, 55vw"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="video-tint" />
+            <button
+              class="play"
+              type="button"
+              aria-label="Reproducir video de presentación"
+              data-video-placeholder
+            >
+              <svg viewBox="0 0 24 24">
+                <path d="m9 7 8 5-8 5V7Z" />
+              </svg>
+            </button>
+            <p class="poster-note">La claridad también es una forma de confiar en Dios.</p>
+          </div>
+        )
+      }
+    </div>
+
+    <form
+      class="signup-card"
+      data-form="captura"
+      data-mastertools={mt.configured ? 'true' : 'false'}
+      action={formAction}
+      method={formMethod}
+      novalidate
+    >
+      {mt.formId && <input type="hidden" name="form_id" value={mt.formId} />}
+      <span class="form-eyebrow">RESERVA TU LUGAR</span>
+      <h2>Reserva tu lugar</h2>
+      <p class="form-intro">Déjanos tus datos y recibirás la información para participar.</p>
+
+      <label class="field">
+        <span class="field-icon" aria-hidden="true"
+          ><svg viewBox="0 0 24 24"
+            ><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-4 3-6 7-6s7 2 7 6"></path></svg
+          ></span
+        >
+        <input name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+      </label>
+
+      <label class="field">
+        <span class="field-icon" aria-hidden="true"
+          ><svg viewBox="0 0 24 24"><path d="M3 6.5h18v11H3zM4 7l8 6 8-6"></path></svg></span
+        >
+        <input name="correo" type="email" autocomplete="email" placeholder="Tu correo electrónico" required />
+      </label>
+
+      <button class="btn btn-primary" type="submit">QUIERO RESERVAR MI LUGAR <span>→</span></button>
+      <p class="form-note">Acceso gratuito · Registro en menos de 1 minuto</p>
+      <div class="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <div class="shell">
+    <div class="support-card">
+      <div class="support-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"
+          ><path
+            d="M4 5.5c4-.7 6 .4 8 2.2 2-1.8 4-2.9 8-2.2V19c-4-.7-6 .4-8 2.2C10 19.4 8 18.3 4 19V5.5Z"></path
+          ><path d="M12 7.7V21"></path></svg
+        >
+      </div>
+      <p>
+        <strong>Una clase práctica</strong> para personas que atraviesan una situación, problema o decisión, y
+        quieren aprender a enfrentarla desde una perspectiva diferente: ordenando lo que viven, acercándose a Dios
+        y aplicando principios cristianos a su realidad cotidiana.
+      </p>
+    </div>
+  </div>
+</section>

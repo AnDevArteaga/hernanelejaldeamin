@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../../config/site';
+import hernanSentado from '../../assets/hernan-sentado.png';
+---
+
+<section class="expert section">
+  <div class="shell expert-card">
+    <div class="expert-photo">
+      <Image
+        src={hernanSentado}
+        alt={`Retrato de ${site.brand}`}
+        widths={[360, 480]}
+        sizes="180px"
+        loading="lazy"
+      />
+    </div>
+    <div class="expert-copy">
+      <span class="form-eyebrow">¿QUIÉN TE ACOMPAÑARÁ EN ESTA CLASE?</span>
+      <h2>{site.brand}</h2>
+      <p>
+        Autor y creador de contenidos orientados al crecimiento espiritual práctico. Durante años ha estudiado y
+        desarrollado herramientas para conectar los principios cristianos con situaciones reales de la vida
+        cotidiana, ayudando a las personas a pasar de la preocupación y la confusión a un proceso más consciente de
+        oración, reflexión y acción.
+      </p>
+      <blockquote>
+        “No religión por religión;<br />
+        <strong>principios para la vida desde una relación con Dios.</strong>”
+      </blockquote>
+    </div>
+  </div>
+</section>

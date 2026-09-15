@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/captura/Hero.astro';
+import EventCard from '../components/captura/EventCard.astro';
+import Registration from '../components/captura/Registration.astro';
+import Benefits from '../components/captura/Benefits.astro';
+import CtaBanner from '../components/captura/CtaBanner.astro';
+import Expert from '../components/captura/Expert.astro';
+import FinalRegister from '../components/captura/FinalRegister.astro';
+import { site } from '../config/site';
+import '../styles/captura.css';
+---
+
+<BaseLayout
+  title={`Clase online gratuita | ${site.brand}`}
+  description={site.description}
+  skipHref="#registro"
+>
+  <main>
+    <Hero />
+    <EventCard />
+    <Registration />
+    <Benefits />
+    <CtaBanner />
+    <Expert />
+    <FinalRegister />
+  </main>
+</BaseLayout>
+
+<script>
+  import {
+    initCountdown,
+    initForms,
+    initPendingLinks,
+    initScrollRegister,
+    initVideoPlaceholders,
+  } from '../scripts/funnel';
+
+  initCountdown();
+  initScrollRegister();
+  initPendingLinks();
+  initVideoPlaceholders(document, 'Pendiente: configura PUBLIC_WISTIA_ID_CAPTURA con el ID de Wistia.');
+  initForms(document, { thankYouPath: '/gracias/' });
+</script>

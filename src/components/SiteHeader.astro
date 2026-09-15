@@ -1,0 +1,17 @@
+---
+import Brand from './Brand.astro';
+
+interface Props {
+  homeHref?: string;
+  shellClass?: string;
+}
+
+const { homeHref = '/', shellClass = 'shell' } = Astro.props;
+---
+
+<header class="site-header" id="top">
+  <div class:list={[shellClass, 'header-inner']}>
+    <Brand href={homeHref} />
+    <div class="header-tagline"><span>Fe.</span> Claridad. Acción.</div>
+  </div>
+</header>

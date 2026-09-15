@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { hrefOrPending, isConfigured, site } from '../../config/site';
+import WistiaPlayer from '../../components/WistiaPlayer.astro';
+import hernanEstudio from '../../assets/hernan-estudio.jpg';
+import '../../styles/webinar.css';
+
+const offerConfigured = isConfigured(site.links.offer);
+---
+
+<BaseLayout
+  title={`Clase en vivo | ${site.brand}`}
+  description={`Webinar en vivo de ${site.brand}.`}
+  shellClass="shell-narrow"
+>
+  <main class="live-page">
+    <div class="shell-narrow card live-card" id="webinarCard">
+      <section class="live-head">
+        <div class="live-row live-only">
+          <span class="live-badge"><span class="live-dot"></span> EN VIVO</span>
+          <span class="status"><i></i>Transmisión en curso</span>
+        </div>
+        <div class="replay-only">
+          <span class="replay-pill">YA DISPONIBLE</span>
+        </div>
+        <h1 class="live-only">
+          Cuando tienes un problema<br />
+          y no sabes qué hacer
+        </h1>
+        <h1 class="replay-only">Aquí tienes la repetición de la clase</h1>
+        <p class="live-only">Una clase práctica para encontrar claridad y dirección desde principios cristianos.</p>
+        <p class="replay-only">
+          <strong>Cuando tienes un problema y no sabes qué hacer.</strong><br />
+          Mira la grabación y descubre cómo encontrar claridad y dirección desde principios cristianos.
+        </p>
+      </section>
+
+      <section class="player" aria-label="Reproductor del webinar">
+        {
+          site.wistia.webinar ? (
+            <div class="player-embed">
+              <WistiaPlayer mediaId={site.wistia.webinar} title="Clase en vivo" />
+            </div>
+          ) : (
+            <>
+              <Image
+                src={hernanEstudio}
+                alt={`${site.brand} en la clase`}
+                widths={[640, 960, 1280]}
+                sizes="(max-width: 980px) 100vw, 980px"
+                loading="eager"
+                fetchpriority="high"
+              />
+              <div class="player-shade" />
+              <span class="player-live">EN VIVO</span>
+              <div class="controls" aria-hidden="true">
+                <span class="control-icon">Ⅱ</span>
+                <span class="bar" />
+                <span class="control-icon">🔊</span>
+                <span class="control-icon">⛶</span>
+              </div>
+            </>
+          )
+        }
+      </section>
+
+      <div class="help">
+        <div class="help-icon" aria-hidden="true">🎧</div>
+        <div>
+          <strong>¿Tienes algún problema con el video?</strong>
+          <span>Prueba a recargar la página o utiliza otro navegador.</span>
+        </div>
+      </div>
+
+      <section class="next">
+        <h2>Lo que viene después…</h2>
+        <p>
+          Al final de la clase te mostraré una oportunidad para que puedas aplicar todo esto de manera guiada, con
+          acompañamiento y recursos prácticos.
+        </p>
+        <a
+          class="offer-btn"
+          href={hrefOrPending(site.links.offer)}
+          data-offer
+          data-pending={!offerConfigured ? 'true' : undefined}
+          target={offerConfigured ? '_blank' : undefined}
+          rel={offerConfigured ? 'noopener noreferrer' : undefined}
+        >
+          CONOCER LA OPORTUNIDAD <span>→</span>
+        </a>
+      </section>
+
+      <div class="replay-box live-only">
+        <div class="ico" aria-hidden="true">🎞️</div>
+        <div>
+          <strong>¿No puedes ver la transmisión?</strong>
+          <span>Después del evento podrás habilitar la misma página en modo repetición.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import { initPendingLinks, showToast } from '../../scripts/funnel';
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('mode') === 'replay') {
+    document.body.classList.add('mode-replay');
+    document.title = 'Repetición de la clase | Hernán Elejalde Amin';
+  }
+
+  initPendingLinks();
+
+  document.querySelector('[data-offer]')?.addEventListener('click', (e) => {
+    const link = e.currentTarget as HTMLAnchorElement;
+    if (link.dataset.pending === 'true' || link.getAttribute('href') === '#') {
+      e.preventDefault();
+      showToast('Pendiente: configura PUBLIC_OFFER_URL con la URL de la oferta o checkout.');
+    }
+  });
+</script>
